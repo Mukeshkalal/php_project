@@ -63,6 +63,9 @@ if (isset($_REQUEST['email'])) {
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                 <label for="password">Password</label>
             </div>
+            <div class="form-floating my-2">
+                <a href="login.php" class="btn btn-primary">login</a>
+            </div>
             <button class="btn btn-primary w-100 py-2" type="submit" name="update">Submit</button>
         </form>
     </div>
