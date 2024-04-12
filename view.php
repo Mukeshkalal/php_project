@@ -6,19 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View</title>
     <?php
-
-
     include 'config.php';
     include 'boot.php';
+    
+    
     $sql = "SELECT * FROM `register`";
     $result = $conn->query($sql);
 
-    if (isset($_POST['delete_all'])) {
+    if (isset($_REQUEST['delete_all'])) {
         $delete_id = $_REQUEST['delete'];
         foreach ($delete_id as $id) {
             $sql = "DELETE FROM `register` WHERE id=$id";
             $conn->query($sql);
         }
+        header('location:view.php');
+    }
+
+    if (isset($_REQUEST['id'])) {
+        $id = $_REQUEST['id'];
+        $sql = "DELETE FROM `register` WHERE id=$id";
+        $conn->query($sql);
+        header('location:view.php');
     }
     ?>
 </head>
@@ -55,7 +63,7 @@
     </header>
     <div class="container my-5">
         <h1 class="text-center fw-bolder border-bottom py-2">view pages</h1>
-        <form action="" method="post">
+        <form method="post">
             <table class="table table-success table-striped-columns">
                 <thead>
                     <tr>
@@ -70,23 +78,23 @@
                 <tbody>
                     <?php
                     $i = 1;
-                    if ($result->num_rows >=1) {
+                    if ($result->num_rows >= 1) {
                         while ($rows = $result->fetch_assoc()) {
                             $id = $rows['id'];
                             $email = $rows['email'];
-                            $password = $rows['password'];
                             $name = $rows['name'];
+                            $password = $rows['password'];
                             echo " <tr>
                         <th>
-                        <input type='checkbox' name='delete[]' />
+                        <input type='checkbox' name='delete[]' value='$id' />
                         </th>
                         <th scope='row'>$i</th>
                         <td>$name</td>
                         <td>$email</td>
                         <td>$password</td>
                         <td>
-                        <a href='update.php?id=$id' class='btn btn-primary'>Update</a>
-                        <a href='delete.php?id=$id' class='btn btn-danger'>Delete</a>
+                        <a href='update.php?id=$id' class='btn btn-primary my-1'>Update</a>
+                        <a href='?id=$id' class='btn btn-danger my-1'>Delete</a>
                         </td>
                     </tr>";
                             $i++;
@@ -95,10 +103,10 @@
                     ?>
                 </tbody>
             </table>
+            <div>
+                <button class="btn btn-danger" name="delete_all" type="submit">Delete All</button>
+            </div>
         </form>
-        <div>
-            <button class="btn btn-danger" name="delete_all">Delete All</button>
-        </div>
     </div>
 
 </body>
