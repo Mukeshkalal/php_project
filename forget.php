@@ -26,7 +26,7 @@ if (isset($_REQUEST['email'])) {
     $password = password_verify($_REQUEST['password'], PASSWORD_DEFAULT);
 
     $sql = "SELECT * FROM `register` WHERE email= '$email'";
-    $result = $conn->query($sql);
+   $conn->query($sql);
     if ($result) {
         echo   "Success";
     }
@@ -58,13 +58,13 @@ if (isset($_REQUEST['email'])) {
                 <input type="email" class="form-control" id="email" name="email" value="" />
                 <label for="email">email enter</label>
             </div>
-            <div class="form-floating my-2"><input type="text" class="form-control" value="" name="odpassword" /></div>
+            <!-- <div class="form-floating my-2"><input type="text" class="form-control" value="" name="odpassword" /></div>
             <div class="form-floating my-2">
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                 <label for="password">Password</label>
-            </div>
+            </div> -->
             <div class="form-floating my-2">
-                <a href="login.php" class="btn btn-primary">login</a>
+                <a href="login.php">login</a>
             </div>
             <button class="btn btn-primary w-100 py-2" type="submit" name="update">Submit</button>
         </form>

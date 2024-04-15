@@ -1,7 +1,19 @@
     <?php
     session_start();
     include 'config.php';
-    include 'boot.php'; ?>
+    include 'boot.php';
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $email = $_SESSION[$_REQUEST['email']];
+        $password = $_SESSION[$_REQUEST['password']];
+        $sql = "SELECT * FROM `register` WHERE `email`= '$email', `password`='$password' ";
+        $result = $conn->query($sql);
+        print_r($result);die;
+        $num = mysqli_num_rows($result);
+        if ($num == 1) {
+            header('location:Home.php');
+        }
+    } ?>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -37,16 +49,5 @@
             </form>
         </div>
     </body>
-    <?php
-    if (isset($_REQUEST['email'])) {
-        $email = $_SESSION[$_REQUEST['email']];
-        $password = password_verify($_REQUEST['password'], PASSWORD_DEFAULT);
-        $sql = "SELECT * FROM `register` WHERE `email`= '$email'";
-        $result = $conn->query($sql);
-        if ($result) {
-            header('location:Home.php');
-        }
-    }
-    ?>
 
     </html>
