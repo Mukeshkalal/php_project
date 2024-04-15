@@ -1,17 +1,29 @@
     <?php
-    session_start();
+   
+   
     include 'config.php';
     include 'boot.php';
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $email = $_SESSION[$_REQUEST['email']];
-        $password = $_SESSION[$_REQUEST['password']];
-        $sql = "SELECT * FROM `register` WHERE `email`= '$email', `password`='$password' ";
+        $email = $_REQUEST['email'];
+        $password = $_REQUEST['password'];
+        $sql = "SELECT * FROM `register` WHERE `email`= '$email'";
         $result = $conn->query($sql);
-        print_r($result);die;
-        $num = mysqli_num_rows($result);
-        if ($num == 1) {
-            header('location:Home.php');
+
+        if ($result && $result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $stored_password = $row['password'];
+
+            // echo $stored_password;die;
+// echo password_verify(password_hash($password,PASSWORD_DEFAULT), $stored_password);die;
+            if (password_verify($password, $stored_password)) {
+                header('location:Home.php');
+                // echo 'Write';
+                // exit;
+            }
+            else {
+                echo 'wrong';
+            }
         }
     } ?>
     <!DOCTYPE html>

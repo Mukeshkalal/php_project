@@ -71,7 +71,6 @@
                         <th scope="col">Sr No.</th>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Password</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -83,7 +82,6 @@
                             $id = $rows['id'];
                             $email = $rows['email'];
                             $name = $rows['name'];
-                            $password = $rows['password'];
                             echo " <tr>
                         <th>
                         <input type='checkbox' name='delete[]' value='$id' />
@@ -91,7 +89,6 @@
                         <th scope='row'>$i</th>
                         <td>$name</td>
                         <td>$email</td>
-                        <td>$password</td>
                         <td>
                         <a href='update.php?id=$id' class='btn btn-primary my-1'>Update</a>
                         <a href='?id=$id' class='btn btn-danger my-1'>Delete</a>
