@@ -1,6 +1,6 @@
     <?php
-   
-   
+
+
     include 'config.php';
     include 'boot.php';
 
@@ -15,13 +15,10 @@
             $stored_password = $row['password'];
 
             // echo $stored_password;die;
-// echo password_verify(password_hash($password,PASSWORD_DEFAULT), $stored_password);die;
+            // echo password_verify(password_hash($password,PASSWORD_DEFAULT), $stored_password);die;
             if (password_verify($password, $stored_password)) {
                 header('location:Home.php');
-                // echo 'Write';
-                // exit;
-            }
-            else {
+            } else {
                 echo 'wrong';
             }
         }

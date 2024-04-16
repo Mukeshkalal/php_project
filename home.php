@@ -25,11 +25,13 @@ if ($result->num_rows > 0) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body class="d-flex flex-column h-100">
     <header>
         Fixed navbar
@@ -63,7 +65,7 @@ if ($result->num_rows > 0) {
     Begin page content
     <main class="flex-shrink-0 mt-4">
         <div class="container">
-            <h1 class="mt-5">Sticky Wel Come To <?php echo $name; ?></h1>
+            <h1 class="mt-5">Sticky Wel Come To <u><?php echo ucfirst(strtolower($name)); ?></u></h1>
             <p class="lead">Pin a footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with <code class="small">padding-top: 60px;</code> on the <code class="small">main &gt; .container</code>.</p>
             <p>Back to <a href="/docs/5.3/examples/sticky-footer/">the default sticky footer</a> minus the navbar.</p>
         </div>
@@ -76,4 +78,5 @@ if ($result->num_rows > 0) {
     </footer>
 
 </body>
+
 </html>

@@ -8,15 +8,15 @@
     <?php
     include 'config.php';
     include 'boot.php';
-    
-    
-    $sql = "SELECT * FROM `register`";
+
+    $num = 1;
+    $sql = "SELECT * FROM `register` LIMIT $num,6";
     $result = $conn->query($sql);
 
     if (isset($_REQUEST['delete_all'])) {
         $delete_id = $_REQUEST['delete'];
         foreach ($delete_id as $id) {
-            $sql = "DELETE FROM `register` WHERE id=$id";
+            $sql = "DELETE FROM `register` WHERE id=$id ";
             $conn->query($sql);
         }
         header('location:view.php');
@@ -90,7 +90,7 @@
                         <td>$name</td>
                         <td>$email</td>
                         <td>
-                        <a href='update.php?id=$id' class='btn btn-primary my-1'>Update</a>
+                        <a href='update.php?id=$id' class='btn btn-primary my-1'>Edit</a>
                         <a href='?id=$id' class='btn btn-danger my-1'>Delete</a>
                         </td>
                     </tr>";
@@ -100,7 +100,12 @@
                     ?>
                 </tbody>
             </table>
+            <div class="d-flex my-2 justify-content-between">
+                <button class="btn btn-primary">Prev</button>
+                <a href='view.php?page=<?php echo $num ?>' class="btn btn-primary">Next</a>
+            </div>
             <div>
+
                 <button class="btn btn-danger" name="delete_all" type="submit">Delete All</button>
             </div>
         </form>
