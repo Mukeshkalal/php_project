@@ -1,25 +1,25 @@
     <?php
-
-
-    include 'config.php';
-    include 'boot.php';
-
+    session_start();
+    include '../sarver/config.php';
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $email = $_REQUEST['email'];
         $password = $_REQUEST['password'];
         $sql = "SELECT * FROM `register` WHERE `email`= '$email'";
         $result = $conn->query($sql);
-
+        
         if ($result && $result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $stored_password = $row['password'];
+            $name = $_REQUEST['name'];
+            $_SESSION['name'] = $name;
 
-            // echo $stored_password;die;
-            // echo password_verify(password_hash($password,PASSWORD_DEFAULT), $stored_password);die;
             if (password_verify($password, $stored_password)) {
-                header('location:Home.php');
+                header('location:../Home.php');
             } else {
-                echo 'wrong';
+                echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>You missing samting!</strong> You are Miss Same data to Enter the target.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>';
             }
         }
     } ?>
@@ -27,21 +27,14 @@
     <html lang="en">
 
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <style>
-            input {
-                background-color: #160f0f00 !important;
-                color: white !important;
-            }
-        </style>
+        <?php include '../components/head.php' ?>
+        <title>Login</title>
     </head>
 
     <body class="bg-dark text-light">
         <div class="container col-md-3 my-5">
             <form method="post">
-                <h1 class="h3 mb-3 fw-normal text-center">Sign Up</h1>
+                <h1 class="h3 mb-3 fw-normal text-center  border-bottom">Sign Up</h1>
                 <div class="form-floating my-2">
                     <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" />
                     <label for="email">Email address</label>

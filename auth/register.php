@@ -1,24 +1,13 @@
+<?php include '../sarver/config.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        input {
-            background-color: #160f0f00 !important;
-            color: white !important;
-        }
-    </style>
-    <?php include 'config.php';
-    include 'boot.php'; ?>
-</head>
+<title>Register Page</title>
+<?php include '../components/head.php'; ?>
 
 <body class="bg-dark text-light">
     <div class="container col-md-3 my-5 py-5">
         <form method="post">
-            <h1 class="h3 mb-3 fw-normal text-center">Sign In</h1>
+            <h1 class="h3 mb-3 fw-normal text-center border-bottom">Sign In</h1>
             <div class="form-floating my-2">
                 <input type="text" class="form-control" id="username" name="username" placeholder="Enter User name" />
                 <label for="username">User Name</label>
@@ -32,7 +21,7 @@
                 <label for="password">Password</label>
             </div>
             <div class="form-floating my-2">
-                <span class="px-1">you have account?<a href="login.php">click Here</a></span>
+                <span class="px-1">you have account?<a href="./login.php">click Here</a></span>
             </div>
             <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
         </form>
