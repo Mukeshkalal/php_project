@@ -1,5 +1,5 @@
 <?php
-include '../sarver/config.php';
+include 'config.php';
 if (isset($_REQUEST['update'])) {
     $email = $_REQUEST['email'];
     $password = $_REQUEST['password'];

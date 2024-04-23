@@ -1,5 +1,5 @@
     <?php
-    include '../sarver/config.php';
+    include '../config.php';
 
     $sql = "SELECT * FROM `register`";
     $result = $conn->query($sql);

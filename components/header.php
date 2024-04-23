@@ -22,7 +22,8 @@ $base_url = "http://localhost/mukesh/registerform/";
                         <a class="nav-link" href="<?php echo $base_url; ?>auth/register.php">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo $base_url; ?>auth/login.php">Login</a>
+                        <a class="nav-link" href="<?php echo $base_url; ?>auth/logout.php">Log Out</a>
+                        <!-- <a class="nav-link" href="logout">Log Out</a> -->
                     </li>
                 </ul>
 

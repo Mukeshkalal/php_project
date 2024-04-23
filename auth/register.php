@@ -1,4 +1,4 @@
-<?php include '../sarver/config.php'; ?>
+<?php include '../config.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <title>Register Page</title>
@@ -21,7 +21,7 @@
                 <label for="password">Password</label>
             </div>
             <div class="form-floating my-2">
-                <span class="px-1">you have account?<a href="./login.php">click Here</a></span>
+                <span class="px-1">you have account?<a href="index.php">click Here</a></span>
             </div>
             <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
         </form>
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sql = "INSERT INTO `register`(`name`,`email`,`password`) VALUE ('$name','$email','$password')";
         $result = $conn->query($sql);
         if ($result) {
-            header('location:login.php');
+            header('location:index.php');
         } else {
             echo 'data is not yet';
         }
